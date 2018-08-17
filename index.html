@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--  Meta  -->
+	<meta charset="UTF-8" />
+	<title>Build BBS</title>
+	<!--  Styles  -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+	<div class="container bbs">
+		<div class="row">
+			<h1 class="text-center">BBS article page</h1>
+			<div class="row">
+				<div class="col-sm-12 col-md-12 bbs-action-bar">
+					<select class="bbs-number-list" id="bbs-list-select">
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="15">15</option>
+					</select>
+					<button type="button" id="bbs-add-new-btn">
+						<i class="fas fa-plus bbs-add-new-icon"></i>
+					</button>
+				</div>
+			</div>
+			<div class="table-responsive">
+				<table class="table" id="article-table">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Author</th>
+							<th>Email</th>
+							<th>Updated date</th>
+							<th>View Count</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody id="bbs-table-body">
+					</tbody>
+				</table>
+				<div class="pagination">
+					<button id="pagination_prev">Prev</button>
+					<button id="pagination_next">Next</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal" id="modal-add-edit-article">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="modal-title" id="modal-add-edit-article-title"></span>
+					<button type="button" class="modal-close-btn">
+						<i class="fas fa-times"></i>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group row error-block hide" id="error-block">
+						<label class="col-sm-12 error-block-msg">Ouch! Some input(s) are missing.</label>
+					</div>
+					<div class="form-group row">
+						<label for="article-title" class="col-sm-2">Title</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="article-title" placeholder="Title">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="article-author" class="col-sm-2">Author</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="article-author" placeholder="Author">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="article-email" class="col-sm-2">Email</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="article-email" placeholder="Email">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="article-content" class="col-sm-2">Content</label>
+						<div class="col-sm-10">
+							<textarea class="form-control" id="article-content" rows="3"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary modal-close-btn">Close</button>
+					<button type="button" class="btn btn-primary modal-save-btn" id="confirm-add-article">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal" id="modal-view-article">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="modal-title" id="modal-view-title"></span>
+					<button type="button" class="modal-view-close-btn">
+						<i class="fas fa-times"></i>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group row">
+						<label class="col-sm-2">Title</label>
+						<div class="col-sm-10">
+							<p id="title-text"></p>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2">Author</label>
+						<div class="col-sm-10">
+							<p id="author-text"></p>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2">Email</label>
+						<div class="col-sm-10">
+							<p id="email-text"></p>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2">Content</label>
+						<div class="col-sm-10">
+							<p id="content-text"></p>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary modal-view-close-btn">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal" id="modal-remove-article">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>Are you sure to remove this article?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="confirm-remove-article">Yes</button>
+					<button type="button" class="btn btn-secondary modal-close-btn">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="scripts/fn.js" defer></script>
+	<script src="scripts/dom.js" defer></script>
+	<script src="scripts/database.js" defer></script>
+	<script src="scripts/utils.js" defer></script>
+	<script src="scripts/index.js" defer></script>
+</body>
+
+</html>
